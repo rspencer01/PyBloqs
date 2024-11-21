@@ -22,7 +22,7 @@ class VegaAltairBlock(BaseBlock):
         super().__init__(**kwargs)
         self._fig = contents
 
-    def _write_contents(self, container, *args, **kwargs):
+    def _write_contents(self, container, *args, **kwargs) -> None:
         container.append(parse(self._fig.to_html(fullhtml=False)))
 
 

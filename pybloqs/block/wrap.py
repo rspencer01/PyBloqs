@@ -19,7 +19,7 @@ class Box(BaseBlock):
         # Blockify the content
         self._contents = Block(contents)
 
-    def _write_contents(self, *args, **kwargs):
+    def _write_contents(self, *args, **kwargs) -> None:
         self._contents._write_block(*args, **kwargs)
 
 

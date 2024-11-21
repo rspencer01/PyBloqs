@@ -1,9 +1,14 @@
+from io import StringIO
+from typing import List, Tuple, Union
+
+import pandas as pd
+
 from pybloqs.plot import Chart, ColorAxis, Expr, Legend, Options3d, Plot, Scatter, Title, Tooltip, XAxis, YAxis
 from pybloqs.plot import Heatmap as HeatmapPlot
 
 
 class Heatmap(Plot):
-    def __init__(self, data, *args, **kwargs):
+    def __init__(self, data: Union[List, Tuple, pd.Series, pd.DataFrame], *args, **kwargs):
         super().__init__(data, HeatmapPlot(), flatten=True, *args, **kwargs)
 
         self._chart_cfg = self._chart_cfg.inherit_many(
@@ -12,7 +17,7 @@ class Heatmap(Plot):
 
 
 class Corr(Heatmap):
-    def __init__(self, data, *args, **kwargs):
+    def __init__(self, data: Union[List, Tuple, pd.Series, pd.DataFrame], *args, **kwargs):
         super().__init__(data, *args, **kwargs)
 
         self._chart_cfg = self._chart_cfg.inherit_many(
@@ -45,5 +50,5 @@ class Surface(Plot):
             Chart(options), Legend(enabled=False), YAxis(Title(text=None))
         ).override_many(Chart(zoom_type=None))
 
-    def _write_plot_postprocess(self, chart_buf):
+    def _write_plot_postprocess(self, chart_buf: StringIO) -> None:
         chart_buf.write("pybloqsSurfaceRotate(chart);")
