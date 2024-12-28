@@ -57,7 +57,7 @@ class HTMLJinjaTableBlock(BaseBlock):
         self.n_header_rows = len(df.columns.names)
         self.merge_vertical = merge_vertical
 
-    def modify_cell_content(self, cell, row_name, column_name):
+    def modify_cell_content(self, cell, row_name, column_name) -> Any:
         if ORG_ROW_NAMES in self.df.columns and self.row_index > 0:
             row_name = self.df[ORG_ROW_NAMES].iloc[self.row_index]
         for formatter in self.formatters:

@@ -84,5 +84,5 @@ class HTMLConverter:
         pdf_page_size: str = A4,
         orientation: str = PORTRAIT,
         **kwargs,
-    ):
+    ) -> Tuple[bytes, bytes]:
         pass

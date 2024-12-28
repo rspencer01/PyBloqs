@@ -140,5 +140,5 @@ script_inflate = JScript("jsinflate", encode=False)
 _registered_resources = DependencyTracker(script_block_core, script_inflate)
 
 
-def register_interactive(*scripts):
+def register_interactive(*scripts: Resource) -> None:
     _registered_resources.add(*scripts)

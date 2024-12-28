@@ -272,7 +272,7 @@ class BaseBlock:
         attachments=None,
         convert_to_ascii: bool = True,
         **kwargs,
-    ):
+    ) -> None:
         """
         Send the rendered blocks as email. Each output format chosen will be added as an
         attachment.

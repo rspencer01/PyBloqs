@@ -120,7 +120,7 @@ class TableFormatter:
             is_selected_cell = False
         return is_selected_cell
 
-    def _insert_additional_html(self) -> NoReturn:
+    def _insert_additional_html(self) -> str:
         """Insert HTML string before table."""
         raise NotImplementedError("_insert_additional_html")
 
@@ -152,11 +152,11 @@ class TableFormatter:
         """Formatting on CSS level, e.g. colors, borders, etc."""
         raise NotImplementedError("format_cell_css")
 
-    def _create_table_level_css_class(self) -> NoReturn:
+    def _create_table_level_css_class(self) -> str:
         """CSS class of table"""
         raise NotImplementedError("create_table_level_css_class")
 
-    def insert_additional_html(self):
+    def insert_additional_html(self) -> str:
         """Inserts additional html (or java-script) before <table>."""
         return self._insert_additional_html()
 
@@ -194,7 +194,7 @@ class TableFormatter:
         else:
             return None
 
-    def create_table_level_css_class(self):
+    def create_table_level_css_class(self) -> str:
         """CSS class of table"""
         return self._create_table_level_css_class()
 

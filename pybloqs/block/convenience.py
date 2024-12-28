@@ -21,7 +21,7 @@ def Block(
     title_wrap: bool = False,
     inherit_cfg: bool = True,
     **kwargs,
-):
+) -> BaseBlock:
     """
     Constructs a composable layout element that will be rendered automatically by
     IPython Notebooks. It can also be saved in HTML, PDF, PNG or JPEG formats.
