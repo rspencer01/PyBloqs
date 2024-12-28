@@ -8,7 +8,7 @@ from pybloqs.plot import Heatmap as HeatmapPlot
 
 
 class Heatmap(Plot):
-    def __init__(self, data: Union[List, Tuple, pd.Series, pd.DataFrame], *args, **kwargs):
+    def __init__(self, data: Union[List, Tuple, pd.Series, pd.DataFrame], *args, **kwargs) -> None:
         super().__init__(data, HeatmapPlot(), flatten=True, *args, **kwargs)
 
         self._chart_cfg = self._chart_cfg.inherit_many(
@@ -17,7 +17,7 @@ class Heatmap(Plot):
 
 
 class Corr(Heatmap):
-    def __init__(self, data: Union[List, Tuple, pd.Series, pd.DataFrame], *args, **kwargs):
+    def __init__(self, data: Union[List, Tuple, pd.Series, pd.DataFrame], *args, **kwargs) -> None:
         super().__init__(data, *args, **kwargs)
 
         self._chart_cfg = self._chart_cfg.inherit_many(
@@ -35,7 +35,7 @@ class Corr(Heatmap):
 
 
 class Surface(Plot):
-    def __init__(self, data, *args, **kwargs):
+    def __init__(self, data, *args, **kwargs) -> None:
         options = Options3d(
             enabled=True,
             alpha=kwargs.pop("alpha", 20),

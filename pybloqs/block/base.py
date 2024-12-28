@@ -38,7 +38,7 @@ class BaseBlock:
         classes: Union[str, Iterable[str]] = (),
         anchor=None,
         **kwargs,
-    ):
+    ) -> None:
         self._settings = Cfg(
             title=title,
             title_level=title_level,

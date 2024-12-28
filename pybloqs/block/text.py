@@ -12,7 +12,7 @@ from pybloqs.html import parse
 
 
 class Raw(BaseBlock):
-    def __init__(self, contents: str, dedent: bool = True, **kwargs):
+    def __init__(self, contents: str, dedent: bool = True, **kwargs) -> None:
         """
         Writes out the content as raw text or HTML.
 

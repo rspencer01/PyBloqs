@@ -108,7 +108,7 @@ class ImgBlock(BaseBlock):
         height: Optional[str] = None,
         img_style: Optional[Dict] = None,
         **kwargs,
-    ):
+    ) -> None:
         """
         Create a block containing an image. The dimensions can be sniffed from GIF
         and PNG data, for other formats, the `width` and `height` parameters can be
@@ -203,7 +203,7 @@ class PlotBlock(ImgBlock):
         width: Optional[str] = None,
         height: Optional[str] = None,
         **kwargs,
-    ):
+    ) -> None:
         """
         Create a block containing a matplotlib figure
 
@@ -267,7 +267,7 @@ class PlotBlock(ImgBlock):
 
 
 class PlotlyPlotBlock(BaseBlock):
-    def __init__(self, contents, plotly_kwargs: Optional[Dict[str, Any]] = None, static_kwargs=None, **kwargs):
+    def __init__(self, contents, plotly_kwargs: Optional[Dict[str, Any]] = None, static_kwargs=None, **kwargs) -> None:
         """
         Writes out the content as raw text or HTML.
 
@@ -307,7 +307,7 @@ class PlotlyPlotBlock(BaseBlock):
 
 
 class BokehPlotBlock(BaseBlock):
-    def __init__(self, contents, static_kwargs=None, **kwargs):
+    def __init__(self, contents, static_kwargs=None, **kwargs) -> None:
         """
         Writes out the content as raw text or HTML.
 

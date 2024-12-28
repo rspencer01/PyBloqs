@@ -65,10 +65,7 @@ line-length = 120
 
 [tool.ruff.lint]
 select = [
-  "ANN201",
-  "ANN202",
-  "ANN205",
-  "ANN206",
+  "ANN2",
   "COM",
   "C4",
   "E",
@@ -85,7 +82,7 @@ select = [
   "UP",
   "W",
 ]
-ignore = ["ANN204", "COM812", "E731", "PT011", "SIM108", "UP006", "UP007"]
+ignore = ["COM812", "E731", "PT011", "SIM108", "UP006", "UP007"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/regression/pybloqs_input/*" = ["F821"]

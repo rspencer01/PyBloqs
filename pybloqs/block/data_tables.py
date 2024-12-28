@@ -17,7 +17,7 @@ from pybloqs.static import Css, JScript
 
 
 class DataTablesCSSClass(TableFormatter):
-    def __init__(self, paging: bool = True, searching: bool = True, info: bool = True):
+    def __init__(self, paging: bool = True, searching: bool = True, info: bool = True) -> None:
         super().__init__()
         self.paging = paging
         self.searching = searching
@@ -48,7 +48,7 @@ class DataTablesHTMLJinjaTableBlock(HTMLJinjaTableBlock):
         searching: bool = True,
         info: bool = True,
         **kwargs,
-    ):
+    ) -> None:
         if formatters is None and use_default_formatters is False:
             formatters = [
                 DataTablesCSSClass(paging, searching, info),

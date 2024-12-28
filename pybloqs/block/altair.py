@@ -12,7 +12,7 @@ from pybloqs.html import parse
 
 
 class VegaAltairBlock(BaseBlock):
-    def __init__(self, contents, **kwargs):
+    def __init__(self, contents, **kwargs) -> None:
         """
         A Block that renders Vega-Altair charts
         """

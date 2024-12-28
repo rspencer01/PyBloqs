@@ -16,7 +16,7 @@ class Resource:
         extension: str = "",
         content_string: Optional[str] = None,
         name: Optional[str] = None,
-    ):
+    ) -> None:
         """
         An external script dependency definition.
 
@@ -67,7 +67,7 @@ class JScript(Resource):
         script_string: Optional[str] = None,
         name: Optional[str] = None,
         encode: bool = True,
-    ):
+    ) -> None:
         """
         A JavaScript dependency definition. Ensures that multiple inclusions of the same function are handled safely.
 
@@ -108,7 +108,9 @@ class JScript(Resource):
 
 
 class Css(Resource):
-    def __init__(self, file_name: Optional[str] = None, css_string: Optional[str] = None, name: Optional[str] = None):
+    def __init__(
+        self, file_name: Optional[str] = None, css_string: Optional[str] = None, name: Optional[str] = None
+    ) -> None:
         """
         A CSS dependency definition. Will prevent adding resource with same name/file_name twice.
 
@@ -123,7 +125,7 @@ class Css(Resource):
 
 
 class DependencyTracker:
-    def __init__(self, *args):
+    def __init__(self, *args) -> None:
         self._deps = list(args)
 
     def add(self, *resources: Resource) -> None:

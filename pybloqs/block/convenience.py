@@ -70,7 +70,7 @@ def Block(
             class _NestedBlock(BaseBlock):
                 container_tag = None
 
-                def __init__(self):
+                def __init__(self) -> None:
                     super().__init__(
                         title=title, title_level=title_level, title_wrap=title_wrap, inherit_cfg=inherit_cfg, **kwargs
                     )

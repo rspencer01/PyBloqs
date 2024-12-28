@@ -67,7 +67,7 @@ class TableFormatter:
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = (True, True),
-    ):
+    ) -> None:
         """Initialise formatter and specify which rows and columns it is applied to. Default None applies to all.
         boolean or 2-tuple of booleans can be supplied to apply_to_header_and_index.
         """
@@ -213,7 +213,7 @@ class FmtToString(TableFormatter):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         super().__init__(rows, columns, apply_to_header_and_index)
         self.fmt_string = fmt_string
         return
@@ -232,7 +232,7 @@ class FmtNumbers(FmtToString):
         rows: Optional[Collection[str]] = None,
         columns=None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         super().__init__(fmt_string, rows, columns, apply_to_header_and_index)
         return
 
@@ -253,7 +253,7 @@ class FmtDecimals(FmtNumbers):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         fmt_string = "{:." + str(n) + "f}"
         super().__init__(fmt_string, rows, columns, apply_to_header_and_index)
 
@@ -267,7 +267,7 @@ class FmtPercent(FmtNumbers):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         fmt_string = "{:." + str(n_decimals) + "%}"
         super().__init__(fmt_string, rows, columns, apply_to_header_and_index)
         return
@@ -282,7 +282,7 @@ class FmtThousandSeparator(FmtNumbers):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         fmt_string = "{:,." + str(n_decimals) + "f}"
         super().__init__(fmt_string, rows, columns, apply_to_header_and_index)
         return
@@ -297,7 +297,7 @@ class FmtDates(FmtToString):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         super().__init__(fmt_string, rows, columns, apply_to_header_and_index)
         return
 
@@ -317,7 +317,7 @@ class FmtYYYYMMDD(FmtDates):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         fmt_string = "{:%Y-%m-%d}"
         super().__init__(fmt_string, rows, columns, apply_to_header_and_index)
         return
@@ -331,7 +331,7 @@ class FmtDDMMMYYYY(FmtDates):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         fmt_string = "{:%d-%b-%Y}"
         super().__init__(fmt_string, rows, columns, apply_to_header_and_index)
         return
@@ -347,7 +347,7 @@ class FmtMultiplyCellValue(TableFormatter):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         super().__init__(rows, columns, apply_to_header_and_index)
         self.d = d
         self.suffix = suffix
@@ -376,7 +376,7 @@ class FmtValueToMillion(FmtMultiplyCellValue):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         super().__init__(1 / 1e6, suffix, rows, columns, apply_to_header_and_index)
         self.suffix = suffix
 
@@ -390,7 +390,7 @@ class FmtValueToBps(FmtMultiplyCellValue):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         super().__init__(1e4, suffix, rows, columns, apply_to_header_and_index)
         self.suffix = suffix
 
@@ -404,7 +404,7 @@ class FmtValueToPercent(FmtMultiplyCellValue):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         super().__init__(1e2, suffix, rows, columns, apply_to_header_and_index)
         self.suffix = suffix
 
@@ -419,7 +419,7 @@ class FmtReplaceNaN(TableFormatter):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         super().__init__(rows, columns, apply_to_header_and_index)
         self.value = value
         self.replace_inf = replace_inf
@@ -442,7 +442,7 @@ class FmtFontsize(TableFormatter):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         super().__init__(rows, columns, apply_to_header_and_index)
         self.fontsize = fontsize
         self.unit = unit
@@ -464,7 +464,7 @@ class FmtHighlightText(TableFormatter):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = False,
-    ):
+    ) -> None:
         super().__init__(rows, columns, apply_to_header_and_index)
         self.bold = bold
         self.italic = italic
@@ -492,7 +492,7 @@ class FmtHighlightBackground(TableFormatter):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = False,
-    ):
+    ) -> None:
         super().__init__(rows, columns, apply_to_header_and_index)
         self.color = color
         return
@@ -510,7 +510,7 @@ class FmtBold(TableFormatter):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         super().__init__(rows, columns, apply_to_header_and_index)
         return
 
@@ -527,7 +527,7 @@ class FmtAlignCellContents(TableFormatter):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         super().__init__(rows, columns, apply_to_header_and_index)
         self.alignment = alignment
         return
@@ -545,7 +545,7 @@ class FmtVerticalAlignCellContents(TableFormatter):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         super().__init__(rows, columns, apply_to_header_and_index)
         self.alignment = alignment
         return
@@ -567,7 +567,7 @@ class FmtHeader(TableFormatter):
         no_wrap=True,
         columns=None,
         color=None,
-    ):
+    ) -> None:
         super().__init__(None, None)
         self.fixed_width = fixed_width
         self.index_width = index_width
@@ -631,7 +631,7 @@ class FmtStripeBackground(TableFormatter):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         super().__init__(rows, columns, apply_to_header_and_index)
         self.first_color = colors.css_color(first_color)
         self.second_color = colors.css_color(second_color)
@@ -663,7 +663,7 @@ class FmtAlignTable(TableFormatter):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         super().__init__(rows, columns, apply_to_header_and_index)
 
         if alignment == "center":
@@ -693,7 +693,7 @@ class FmtHeatmap(TableFormatter):
         columns=None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = False,
         cache=None,
-    ):
+    ) -> None:
         super().__init__(rows, columns, apply_to_header_and_index)
         self.axis = axis
         self.min_color = min_color
@@ -773,7 +773,7 @@ class FmtAppendTotalsRow(TableFormatter):
         total_columns=None,
         hline_color=colors.DARK_BLUE,
         hline_style: str = "1px solid",
-    ):
+    ) -> None:
         self.row_name = row_name
         # Operate on all columns: Set self.columns to None
         super().__init__([row_name], None)
@@ -840,7 +840,7 @@ class FmtAppendTotalsColumn(TableFormatter):
         background_color=colors.LIGHT_GREY,
         font_color=None,
         total_rows=None,
-    ):
+    ) -> None:
         self.column_name = column_name
         # Operate on all rows: Set self.rows to None
         super().__init__(None, [column_name])
@@ -901,7 +901,7 @@ class FmtExpandMultiIndex(TableFormatter):
         hline_color=colors.DARK_BLUE,
         level_background_colors=None,
         level_text_colors=None,
-    ):
+    ) -> None:
         # Operate on all columns: Set self.columns to None
         super().__init__(None, None)
 
@@ -1007,7 +1007,7 @@ class FmtAddCellPadding(TableFormatter):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         super().__init__(rows, columns, apply_to_header_and_index)
         self.padding = {"left": left, "right": right, "top": top, "bottom": bottom}
         self.length_unit = length_unit
@@ -1037,7 +1037,7 @@ class FmtAddCellBorder(TableFormatter):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = False,
-    ):
+    ) -> None:
         super().__init__(rows, columns, apply_to_header_and_index)
         if each is not None:
             self.padding = {"left": each, "right": each, "top": each, "bottom": each}
@@ -1082,7 +1082,7 @@ class FmtFontFamily(TableFormatter):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         super().__init__(rows, columns, apply_to_header_and_index)
         self.font_family = font_family
 
@@ -1099,7 +1099,7 @@ class FmtHideCells(TableFormatter):
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
         use_visibility: bool = False,
-    ):
+    ) -> None:
         super().__init__(rows, columns, apply_to_header_and_index)
         self.use_visibility = use_visibility
         return
@@ -1149,7 +1149,7 @@ class FmtPageBreak(TableFormatter):
     expected.
     """
 
-    def __init__(self, no_break: bool = True, repeat_header: bool = True):
+    def __init__(self, no_break: bool = True, repeat_header: bool = True) -> None:
         super().__init__(None, None, False)
         self.no_break = no_break
         self.repeat_header = repeat_header
@@ -1185,7 +1185,7 @@ class FmtColumnMultiIndexBasic(TableFormatter):
         Per cell CSS tags for each cell in index column.
     """
 
-    def __init__(self, cell_css=None, index_col_css=None):
+    def __init__(self, cell_css=None, index_col_css=None) -> None:
         super().__init__([HEADER_ROW_NAME], None, True)
         self.cell_css = cell_css
         self.index_col_css = index_col_css
@@ -1252,7 +1252,7 @@ class FmtColumnMultiIndexRows(FmtColumnMultiIndexBasic):
         Per cell CSS tags for each cell in index column.
     """
 
-    def __init__(self, row_css=None, index_col_css=None):
+    def __init__(self, row_css=None, index_col_css=None) -> None:
         super().__init__(cell_css=None, index_col_css=index_col_css)
         self.row_css = row_css
         return
@@ -1302,7 +1302,7 @@ class FmtHeatmapWithCenter(TableFormatter):
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = False,
         cache=None,
-    ):
+    ) -> None:
         super().__init__(rows, columns, apply_to_header_and_index)
         self.axis = axis
         self.min_color = min_color
@@ -1383,7 +1383,7 @@ class FmtHideInsignificant(TableFormatter):
         rows: Optional[Collection[str]] = None,
         columns: Optional[Collection[str]] = None,
         apply_to_header_and_index: Union[bool, Tuple[bool, bool]] = True,
-    ):
+    ) -> None:
         super().__init__(rows, columns, apply_to_header_and_index)
 
     def _modify_cell_content(self, data: "HTMLJinjaTableBlock.FormatterData") -> str:

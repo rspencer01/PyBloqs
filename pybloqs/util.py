@@ -139,9 +139,9 @@ class Cfg(dict):
     def __setattr__(self, name: str, value: Any) -> None:
         self[name] = value
 
-    def __setstate__(self, state):
+    def __setstate__(self, state) -> None:
         for key in state:
             self[key] = state[key]
 
-    def __getstate__(self):
+    def __getstate__(self) -> Dict[str, Any]:
         return {key: self[key] for key in self}

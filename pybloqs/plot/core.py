@@ -43,7 +43,7 @@ class Expr:
     Represents a javascript expression as a string.
     """
 
-    def __init__(self, fun_str: str):
+    def __init__(self, fun_str: str) -> None:
         self.fun_str = fun_str
 
     def write_jscript(self, stream: TextIO) -> None:
@@ -78,7 +78,7 @@ class _PlotDim(Expr):
     def __mod__(self, other: Any) -> "_PlotDim":
         return self._construct_arith("%", other)
 
-    def __pow__(self, power, modulo=None):
+    def __pow__(self, power, modulo=None) -> "_PlotDim":
         if modulo is not None:
             raise NotImplementedError
 
@@ -100,7 +100,7 @@ class Plot(BaseBlock):
 
     resource_deps = tuple(JScript(m) for m in HIGHCHARTS_ALL)
 
-    def __init__(self, data: Union[List, Tuple, pd.Series, pd.DataFrame], *args, **kwargs):
+    def __init__(self, data: Union[List, Tuple, pd.Series, pd.DataFrame], *args, **kwargs) -> None:
         """
         Create a chart or composite chart from the supplied data.
 
@@ -586,7 +586,7 @@ StackLabels = _make_chart_cfg("stack_labels")
 
 def _make_plot_opts(plot_type: str, rank: int) -> Type[_PlotOpts]:
     class _SpecPlotOpts(_PlotOpts):
-        def __init__(self, *args, **kwargs):
+        def __init__(self, *args, **kwargs) -> None:
             super().__init__(*args, **kwargs)
             self.type = plot_type
 
