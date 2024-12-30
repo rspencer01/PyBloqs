@@ -134,7 +134,10 @@ class Cfg(dict):
                 yield (k, dict2[k])
 
     def __getattr__(self, item: str) -> Any:
-        return self[item]
+        try:
+            return self[item]
+        except KeyError:
+            raise AttributeError(f"'Cfg' object has no attribute '{item}'")
 
     def __setattr__(self, name: str, value: Any) -> None:
         self[name] = value
