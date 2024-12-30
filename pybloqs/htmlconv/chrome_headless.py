@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from numbers import Number
 from typing import TYPE_CHECKING, Optional, Tuple, Union
 
@@ -23,11 +21,11 @@ class ChromeHeadlessConverter(HTMLConverter):
 
     def htmlconv(
         self,
-        block: BaseBlock,
+        block: "BaseBlock",
         output_file: str,
-        header_block: Optional[BaseBlock] = None,
+        header_block: Optional["BaseBlock"] = None,
         header_spacing: Union[None, str, Number] = None,
-        footer_block: Optional[BaseBlock] = None,
+        footer_block: Optional["BaseBlock"] = None,
         footer_spacing: Union[None, str, Number] = None,
         pdf_zoom: Number = 1,
         pdf_page_size: str = A4,

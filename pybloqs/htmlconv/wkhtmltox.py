@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import os
 from numbers import Number
 from typing import TYPE_CHECKING, Optional, Tuple, Union
@@ -17,11 +15,11 @@ class WkhtmltopdfConverter(HTMLConverter):
 
     def htmlconv(
         self,
-        block: BaseBlock,
+        block: "BaseBlock",
         output_file: str,
-        header_block: Optional[BaseBlock] = None,
+        header_block: Optional["BaseBlock"] = None,
         header_spacing: Optional[Union[str, float]] = None,
-        footer_block: Optional[BaseBlock] = None,
+        footer_block: Optional["BaseBlock"] = None,
         footer_spacing: Optional[Union[str, float]] = None,
         pdf_zoom: Number = 1,
         pdf_page_size: str = A4,
@@ -86,7 +84,7 @@ class WkhtmltopdfConverter(HTMLConverter):
 
 
 class WkhtmltoimageConverter(HTMLConverter):
-    def htmlconv(self, block: BaseBlock, output_file: str, pdf_zoom: float = 1, **kwargs) -> Tuple[bytes, bytes]:
+    def htmlconv(self, block: "BaseBlock", output_file: str, pdf_zoom: float = 1, **kwargs) -> Tuple[bytes, bytes]:
         """
         Use the wkhtmltoimage tool to convert the supplied HTML content to an image file.
 

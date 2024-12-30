@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import logging
 import os
 import subprocess
@@ -54,7 +52,7 @@ class HTMLConverter:
         return output, errors
 
     @staticmethod
-    def write_html_to_tempfile(block: BaseBlock, content: str) -> str:
+    def write_html_to_tempfile(block: "BaseBlock", content: str) -> str:
         name = block._id[: user_config["id_precision"]] + ".html"
         tempdir = user_config["tmp_html_dir"]
         html_filename = os.path.join(tempdir, name)
@@ -74,7 +72,7 @@ class HTMLConverter:
     @abstractmethod
     def htmlconv(
         self,
-        block: BaseBlock,
+        block: "BaseBlock",
         output_file: str,
         header_filename=None,
         header_spacing: Union[None, str, Number] = None,
